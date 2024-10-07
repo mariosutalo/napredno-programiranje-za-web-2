@@ -1,11 +1,11 @@
 const { error } = require('console')
 const fs = require('fs')
-// fs.readFile('./docs/blog.txt', (error, fileData) => {
-//     if (error) {
-//         console.log(`error opening file: ${error}`)
-//     }
-//     console.log(fileData.toString())
-// })
+fs.readFile('./docs/blog.txt', (error, fileData) => {
+    if (error) {
+        console.log(`error opening file: ${error}`)
+    }
+    console.log(fileData.toString())
+})
 
 // fs.writeFile('./docs/blog.txt','Hi, again', (err) => {
 //     if (err) {
