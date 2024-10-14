@@ -1,15 +1,28 @@
 const http = require('http')
 const fs = require('fs')
 
-const server = http.createServer((req,res)=> {
-    console.log(req.url, req.method)
+const server = http.createServer((req, res) => {
+    console.log(`request url is: ${req.url}`)
     res.setHeader('Content-Type', 'text/html')
-    // res.write('<head><link rel="stylesheet" href= "#"></head>')
-    // res.write('<p>Hello from server :)</p>')
-    // res.write('<h1>Hello from server in h1 :)</h1>')
-    // res.end()
-    fs.readFile('./views/index.html', (err, data) => {
-        if(err) {
+
+    let path = './views/'
+    switch (req.url) {
+        case '/':
+            path += 'index.html'
+            break;
+        case '/about':
+            path = path + 'about'
+            break
+        case '/contact':
+            path += 'contact.html'
+            break
+        default:
+            path += '404.html'
+            break;
+    }
+
+    fs.readFile(path, (err, data) => {
+        if (err) {
             console.log(err)
             res.end()
         } else {
