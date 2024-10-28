@@ -2,28 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document | <%= title %>
+  </title>
 </head>
+<% const name='mario' %>
 
 <body>
-    <nav>
-        <div class="site-title">
-            <a href="/">
-                <h1>Blog Ninja</h1>
-            </a>
-        </div>
-        <ul>
-            <li><a href="/">Blogs</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blogs/create">New Blog</a></li>
-        </ul>
-    </nav>
+  <nav>
+    <ul>
+      <li><a href="/">Blogs</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/blogs/create">New Blog</a></li>
+    </ul>
+  </nav>
 
-    <div class="blogs content">
-        <h2>all blogs</h2>
-    </div>
+  <div class="blogs content">
+    <h2>all blogs</h2>
+    <% if (blogs.length > 0) { %>
+    <% blogs.forEach((blog=> { %>
+    <h3 class="title"> <%= blog.title %></h3>
+    <p class="snippet"><%= blog.snippet %></p>
+    <% })) %>
+    <% } else { %>
+    <p>There are no blogs to display</p>
+    <% } %>
+    <% if (condition) { %>
+     
+    <% } %>
+     
+     
+     
+  </div>
 </body>
 
 </html>
