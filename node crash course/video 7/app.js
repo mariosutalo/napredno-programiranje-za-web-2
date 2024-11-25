@@ -1,6 +1,11 @@
 const express = require('express')
 const morgan = require('morgan')
 
+const credentials = {
+    userName: 'bob@gmail.com',
+    password: '1234'
+}
+
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -9,6 +14,7 @@ app.listen(3000)
 
 app.use(express.static('public'))
 app.use(morgan('dev'))
+app.use(express.urlencoded({ extended: true }));
 
 // app.use((req, res, next) => {
 //     console.log('new request made')
@@ -52,6 +58,20 @@ app.get('/categories', (req, res) => {
         { name: 'Video', products: 20 },
     ]
     res.render('categories', { categories })
+})
+
+app.get('/login', (req, res) => {
+    res.render('login', { title: 'login' })
+})
+
+app.post('/login', (req, res) => {
+    const username = req.body.username
+    const password = req.body.password
+    if (credentials.userName === username && credentials.password === password) {
+        res.redirect('/')
+    } else {
+        res.redirect('/login')
+    }
 })
 
 app.use((req, res) => {
