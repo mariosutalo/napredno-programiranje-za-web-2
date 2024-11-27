@@ -70,7 +70,7 @@ app.post('/login', (req, res) => {
     if (credentials.userName === username && credentials.password === password) {
         res.redirect('/')
     } else {
-        res.redirect('/login')
+        res.render('login', { title: 'login', error: true })
     }
 })
 
