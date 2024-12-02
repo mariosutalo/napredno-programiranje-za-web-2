@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head.ejs') %>
-    <body>
-        <%- include('./partials/nav.ejs') %>
-        <form action="/login" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <% if (typeof error != "undefined") { %>
-            <p class="login-error-p">Username or password incorrect</p>
-            <% } %>
-            <input type="submit" value="Login">
-        </form>
-        <%- include('./partials/footer.ejs') %>
-    </body>
+
+<body>
+  <%- include('./partials/nav.ejs') %>
+  <div class="main-container-div">
+    <form action="/login" method="post">
+      <label for="username">Username:</label>
+      <br>
+      <input type="text" id="username" name="username" required>
+      <br>
+      <label for="password">Password:</label>
+      <br>
+      <input type="password" id="password" name="password" required>
+      <br>
+      <% if (typeof error != "undefined") { %>
+      <p class="login-error-p">Username or password incorrect</p>
+      <% } %>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+  <%- include('./partials/footer.ejs') %>
+</body>
+
 </html>

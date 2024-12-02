@@ -110,3 +110,18 @@ textarea {
 .login-error-p {
   color: red;
 }
+
+.main-container-div {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container-div form {
+  width: 40vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.main-container-div form input:not([type="submit"]) {
+  width: 100%;
+}
