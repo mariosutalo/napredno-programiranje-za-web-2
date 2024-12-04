@@ -120,8 +120,24 @@ textarea {
   width: 40vw;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .main-container-div form input:not([type="submit"]) {
-  width: 100%;
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+  padding: 5px 10px;
+}
+
+.main-container-div form input[type="submit"] {
+  align-self: flex-start;
+  padding: 5px 16px;
+  border: none;
+  background-color: rgb(75, 75, 245);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }

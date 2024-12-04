@@ -7,13 +7,10 @@
   <div class="main-container-div">
     <form action="/login" method="post">
       <label for="username">Username:</label>
-      <br>
-      <input type="text" id="username" name="username" required>
-      <br>
+      <input type="text" id="username" name="username" required minlength="8" maxlength="32" >
       <label for="password">Password:</label>
-      <br>
-      <input type="password" id="password" name="password" required>
-      <br>
+      <input type="password" id="password" name="password" required minlength="8" maxlength="32" pattern="[A-Za-z0-9_.-]*">
+      <!-- <input type="password" id="password" name="password" required minlength="8" maxlength="32" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"> -->
       <% if (typeof error != "undefined") { %>
       <p class="login-error-p">Username or password incorrect</p>
       <% } %>
