@@ -1,23 +1,21 @@
-import React, { useState } from 'react'
+import { useState } from "react"
 
 const Home = () => {
 
-  var name = 'mario'
+  const [name, setName] = useState("Mario")
+  const [age, setAge] = useState(25)
+
+  console.log('rerendered....')
 
   const handleClick = (e) => {
-    name = "John"
-    console.log(name)
+    setName("John")
   }
-
-  // const handleClickAgain = (name, e) => {
-  //   console.log('hello,' + name, e.target)
-  // }
 
   return (
     <div className='home'>
       <h2>Home</h2>
-      <button onClick={handleClick}>Click me</button>
-      {name}
+      <button onClick={handleClick}>Change Name</button>
+      My name is {name} and my age is {age}
     </div>
   )
 }
