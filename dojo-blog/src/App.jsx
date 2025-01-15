@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Navbar from './Navbar'
 import Home from './Home'
-import Blogs from './Blogs'
+import BlogList from './BlogList'
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <div className="content">
         <Home />
-        <Blogs />
+        <BlogList />
       </div>
     </div>
   )
