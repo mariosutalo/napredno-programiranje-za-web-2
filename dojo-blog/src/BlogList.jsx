@@ -13,6 +13,7 @@ const BlogList = (props) => {
                     <p>Written by {blog.author}</p>
                 </div>
             ))}
+            <p>{title}</p>
         </div>
     )
 }
