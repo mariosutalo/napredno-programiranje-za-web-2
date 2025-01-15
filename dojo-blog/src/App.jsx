@@ -16,7 +16,8 @@ function App() {
       <Navbar />
       <div className="content">
         {/* <Home /> */}
-        <BlogList blogs={blogs} title="All blogs"/>
+        <input type="text" />
+        <button>Add new Blog</button>
         <BlogList blogs={blogs} title="All blogs"/>
       </div>
     </div>
