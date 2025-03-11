@@ -1,2 +1,0 @@
-https://stackoverflow.com/questions/33655534/difference-between-declarative-and-imperative-in-react-js
-https://react.dev/learn

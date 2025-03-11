@@ -1,7 +1,7 @@
 {
-  "name": "web_shop",
+  "name": "server",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -9,9 +9,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@types/node": "^22.10.1",
-    "ejs": "^3.1.10",
-    "express": "^4.21.2",
-    "mysql2": "^3.11.5"
+    "express": "^4.21.2"
   }
 }
