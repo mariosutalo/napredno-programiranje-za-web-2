@@ -1,4 +1,4 @@
 node_modules
 dojo_blog/node_modules
-web_shop_spa/server/node_modules
-web _shop _spa/client/node_modules
+web_shop_admin/server/node_modules
+web_shop_admin/client/node_modules

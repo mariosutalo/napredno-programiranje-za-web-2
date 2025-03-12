@@ -1,12 +1,8 @@
 import express from 'express'
 const router = express.Router()
 
-const users = [
-    {id: 1, name: 'Mario'}
-]
-
 // Define user routes
-    // Get all users
+    // Get all products
 router.get("/", async (req, res) => {
     const db = req.app.locals.db
     try {

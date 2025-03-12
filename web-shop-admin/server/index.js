@@ -1,6 +1,6 @@
 import express from 'express'
 import mysql from 'mysql2/promise'
-import blogRoutes from './routes/users.js';
+import productRoutes from './routes/products.js';
 
 const app = express();
 const PORT = 3000;
@@ -24,7 +24,7 @@ app.listen(PORT, () => {
 });
 
 // Using routes
-app.use('/users', blogRoutes);
+app.use('/products', productRoutes);
 
 
 

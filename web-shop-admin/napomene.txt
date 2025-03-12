@@ -1,0 +1,9 @@
+Što sve web (http) server vraća klijentu(web pregled) na njegov zahtjev:
+- html
+- css
+- javscript
+- slike:jpg,....
+- sve vrste file tipova
+- json - web api
+- xml
+
