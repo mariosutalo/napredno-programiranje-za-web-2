@@ -1,0 +1,14 @@
+.header_div {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.header_link {
+    color: var(--color1);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: var(--20px);
+    font-weight: 600;
+    font-family: Arial;
+}
