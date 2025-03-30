@@ -1,5 +1,6 @@
 import React from 'react'
 import useFetch from '../../hooks/useFetch'
+import ProductsList from '../../components/productsList/productsList'
 
 const Products = () => {
 
@@ -9,9 +10,8 @@ const Products = () => {
     <div>
       {isPending && <p>Loading...</p>}
       {error && <p>error</p>}
-      {data && <p>{data.count}</p>}
+      {data && <ProductsList products={data} />}
     </div>
-
   )
 }
 
