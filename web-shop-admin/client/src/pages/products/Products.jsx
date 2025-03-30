@@ -9,7 +9,7 @@ const Products = () => {
     <div>
       {isPending && <p>Loading...</p>}
       {error && <p>error</p>}
-      {data && <p>data.count</p>}
+      {data && <p>{data.count}</p>}
     </div>
 
   )
