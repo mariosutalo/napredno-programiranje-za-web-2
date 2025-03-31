@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import useFetch from '../../hooks/useFetch'
-// import ProductsList from '../../components/productsList/productsList'
-import ProductsListV2 from '../../components/productsList/ProductsListV2'
+import ProductsList from '../../components/productsList/productsList'
+
 
 const Products = () => {
 
@@ -11,7 +11,7 @@ const Products = () => {
     <div>
       {isPending && <p>Loading...</p>}
       {error && <p>error</p>}
-      {data && <ProductsListV2 products={data} isOnSale={true} />}
+      {data && <ProductsList products={data}/>}
     </div>
   )
 }
