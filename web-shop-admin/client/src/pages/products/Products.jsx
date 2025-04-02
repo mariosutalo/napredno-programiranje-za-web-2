@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import useFetch from '../../hooks/useFetch'
 import ProductsList from '../../components/productsList/productsList'
+<<<<<<< HEAD
 import styles from './Products.module.css'
+=======
+
+>>>>>>> 4e03ba2606a9182320d6487e09d601034d143ad5
 
 const Products = () => {
 
@@ -23,7 +27,11 @@ const Products = () => {
       </div>
       {isPending && <p>Loading...</p>}
       {error && <p>error</p>}
+<<<<<<< HEAD
       {data && <ProductsList products={data} />}
+=======
+      {data && <ProductsList products={data}/>}
+>>>>>>> 4e03ba2606a9182320d6487e09d601034d143ad5
     </div>
   )
 }
