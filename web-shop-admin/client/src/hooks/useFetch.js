@@ -44,7 +44,7 @@ const useFetch = (url, isLocalServer = true) => {
         }
 
         return () => { abortController.abort() }
-    }, [isLocalServer, url])
+    }, [url, isLocalServer])
     
     return { data, isPending, error }
 }
