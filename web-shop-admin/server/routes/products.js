@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     console.log('product name:', productName) 
     try {
         const [result, fields] = await db.query(`select * from products
-           where name like '${productName}%';`)
+           where name like '%${productName}%';`)
         res.json(result)
     } catch (error) {
         res.json('error')

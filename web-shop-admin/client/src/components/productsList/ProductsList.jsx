@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './productsList.module.css'
+import { Link } from 'react-router-dom'
 
 const ProductsList = ({ products }) => {
     return (
@@ -15,6 +16,7 @@ const ProductsList = ({ products }) => {
                             <th>Stock</th>
                             <th>Category</th>
                             <th>Likes</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,6 +28,7 @@ const ProductsList = ({ products }) => {
                                 <td>{product.stock}</td>
                                 <td>{product.category_id}</td>
                                 <td>{product.likes}</td>
+                                <td><Link to={`/editProduct/${product.id}`}>Edit</Link></td>
                             </tr>
                         ))}
                     </tbody>
