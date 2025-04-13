@@ -7,3 +7,6 @@
 - json - web api
 - xml
 
+Brisanje lokalnog i remote brancha na git-u:
+git branch -D add-react ; git push origin --delete add-react
+
