@@ -37,4 +37,10 @@ router.get('/productDetails', async (req, res) => {
   }
 })
 
+router.put('/', (req, res) => {
+  const requestBody = req.body
+  console.log("Request body", requestBody)
+  return res.status(204).json();
+})
+
 export default router
