@@ -1,5 +1,16 @@
 import express from 'express'
 const router = express.Router()
+import { z } from 'zod'
+
+const updateProductSchema = z.object({
+  id: z.number().min(0),
+  name: z.string().min(5),
+  price: z.number().min(0),
+  stock: z.number().min(0),
+  specs: z.string().optional().default(''),
+  warranty: z.number().optional().default(24),
+  description: z.string().optional().default('')
+})
 
 // Define user routes
 // Get all products
@@ -28,19 +39,38 @@ router.get('/productDetails', async (req, res) => {
   try {
     const [result, fields] = await db.execute(getProductByIdQuery, [productId])
     const product = result[0]
+    const productWithPriceInNumber = { ...product, price: Number(product.price) }
     if (!product) {
       return res.status(404).json({ message: 'Product not found' })
     }
-    return res.json(product)
+    return res.json(productWithPriceInNumber)
   } catch (error) {
     return res.status(404).json({ message: 'Product not found' })
   }
 })
 
-router.put('/', (req, res) => {
-  const requestBody = req.body
-  console.log("Request body", requestBody)
-  return res.status(204).json();
+router.put('/', async (req, res) => {
+  const validationResult = updateProductSchema.safeParse(req.body)
+  if (!validationResult.success) {
+    return res.status(400).json({
+      error: 'Validation error',
+      issues: validationResult.error.errors
+    })
+  }
+  // const updatedProduct = validationResult.data
+  // const db = req.app.locals.db
+  // const updateProductQuery = `update products
+  // set name = ?, price = ?, stock = ?, specs = ?, warranty = ?, description = ?
+  // where id = ?`
+  // const result = await db.execute(updateProductQuery, [
+  //   updatedProduct.name,
+  //   updatedProduct.price,
+  //   updatedProduct.stock,
+  //   updatedProduct.specs,
+  //   updatedProduct.warranty,
+  //   updatedProduct.description
+  // ])
+  return res.status(204).json()
 })
 
 export default router
