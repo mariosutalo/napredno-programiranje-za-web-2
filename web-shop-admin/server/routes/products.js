@@ -57,20 +57,26 @@ router.put('/', async (req, res) => {
       issues: validationResult.error.errors
     })
   }
-  // const updatedProduct = validationResult.data
-  // const db = req.app.locals.db
-  // const updateProductQuery = `update products
-  // set name = ?, price = ?, stock = ?, specs = ?, warranty = ?, description = ?
-  // where id = ?`
-  // const result = await db.execute(updateProductQuery, [
-  //   updatedProduct.name,
-  //   updatedProduct.price,
-  //   updatedProduct.stock,
-  //   updatedProduct.specs,
-  //   updatedProduct.warranty,
-  //   updatedProduct.description
-  // ])
-  return res.status(204).json()
+  const updatedProduct = validationResult.data
+  const db = req.app.locals.db
+  const updateProductQuery = `update products
+  set name = ?, price = ?, stock = ?, specs = ?, warranty = ?, description = ?
+  where id = ?`
+  try {
+    const [results, fields] = await db.execute(updateProductQuery, [
+      updatedProduct.name,
+      updatedProduct.price.toString(),
+      updatedProduct.stock.toString(),
+      updatedProduct.specs,
+      updatedProduct.warranty.toString(),
+      updatedProduct.description,
+      updatedProduct.id.toString()
+    ])
+    return res.status(204).json()
+  } catch (error) {
+    return res.status(500).json()
+  }
+
 })
 
 export default router
