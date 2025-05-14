@@ -15,14 +15,19 @@ const EditProduct = () => {
         }
     }, [data])
 
-    console.log('componente rerendered!')
+    useEffect(() => {
+        console.log('Form data in use effect:', formData)
+    }, [formData])
 
     function onChangeFormData(e) {
         const { name, value } = e.target
-        console.log('form data:', name, value)
+        let valueAsNumber = 0
+        if (name === 'stock' || name === 'price' || name === 'warranty') {
+            valueAsNumber = Number(value)
+        }
         setFormData(prev => ({
             ...prev,
-            [name]: value
+            [name]: valueAsNumber
         }))
     }
 
@@ -38,8 +43,6 @@ const EditProduct = () => {
                 },
                 body: JSON.stringify(formData)
             })
-            // const result = await response.json()
-            // console.log('result', result)
         } catch (error) {
             console.log('Error updating product:', error)
         } finally {
@@ -70,7 +73,6 @@ const EditProduct = () => {
                     <button type='submit'>Save changes</button>
                 </fieldset>
             </form>}
-
         </div>
     )
 }
