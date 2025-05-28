@@ -1,6 +1,7 @@
 import express from 'express'
 const router = express.Router()
 import { z } from 'zod'
+import { db } from '../index.js'
 
 const updateProductSchema = z.object({
   id: z.number().min(0),
@@ -12,10 +13,13 @@ const updateProductSchema = z.object({
   description: z.string().optional().default('')
 })
 
+const createProductSchema = updateProductSchema.extend({
+  category_id: z.number().min(1)
+})
+
 // Define user routes
 // Get all products
 router.get("/", async (req, res) => {
-  const db = req.app.locals.db
   const productName = req.query.product_name ?? ''
   console.log('product name:', productName)
   try {
@@ -28,7 +32,6 @@ router.get("/", async (req, res) => {
 });
 
 router.get('/productDetails', async (req, res) => {
-  const db = req.app.locals.db
   const productId = parseInt(req.query.id)
   if (isNaN(productId)) {
     res.status(404).json({ message: 'Product not found' })
@@ -58,7 +61,6 @@ router.put('/', async (req, res) => {
     })
   }
   const updatedProduct = validationResult.data
-  const db = req.app.locals.db
   const updateProductQuery = `update products
   set name = ?, price = ?, stock = ?, specs = ?, warranty = ?, description = ?
   where id = ?`
@@ -76,7 +78,28 @@ router.put('/', async (req, res) => {
   } catch (error) {
     return res.status(500).json()
   }
+})
 
+router.post('/', async (req, res) => {
+  const validationResult = createProductSchema.safeParse(req.body)
+  if (!validationResult.success) {
+    return res.status(400).json({
+      error: 'Validation error',
+      issues: validationResult.error.errors
+    })
+  }
+  const { name, description, category_id, price, stock, specs, warranty } = validationResult.data
+  const insertNewProductQuery = `insert into products (name, price, stock, category_id, specs, warranty, description)
+                                 values (?, ?, ?, ?, ?, ?, ?)`
+  try {
+    const [result, fields] = await db.execute(insertNewProductQuery, [name, price, stock, category_id, specs, warranty, description])
+    console.log('Add new product result', result)
+    console.log('Base url:', req.baseUrl)
+    const addedProductUrl = `http://localhost:3000/products/productDetails?id=${result.insertId}`
+    return res.json({ status: 'success', productUrl: addedProductUrl })
+  } catch (error) {
+    return res.status(403).json()
+  }
 })
 
 export default router

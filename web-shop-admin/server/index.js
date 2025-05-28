@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
 
 // Create the connection to database
-const db = await mysql.createConnection({
+export const db = await mysql.createConnection({
   host: 'localhost',
   user: 'root',
   database: 'webshop',
