@@ -14,6 +14,7 @@ const updateProductSchema = z.object({
 })
 
 const createProductSchema = updateProductSchema.extend({
+  id: z.number().optional(),
   category_id: z.number().min(1)
 })
 
@@ -81,6 +82,7 @@ router.put('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+
   const validationResult = createProductSchema.safeParse(req.body)
   if (!validationResult.success) {
     return res.status(400).json({
