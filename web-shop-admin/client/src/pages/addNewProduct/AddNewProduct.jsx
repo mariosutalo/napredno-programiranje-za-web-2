@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import ProductForm from '../../components/productForm/ProductForm'
 
+const getEmptyProductForm = () => {
+    return {
+        name: '',
+        price: '',
+        stock: '',
+        category_id: '',
+        specs: '',
+        warranty: '',
+        description: ''
+    }
+}
+
 const AddNewProduct = () => {
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState(getEmptyProductForm())
 
-
-    useEffect(() => {
-        console.log('new form data set')
-    }, [formData])
-
+    const resetFormData = () => {
+        setFormData(getEmptyProductForm())
+    }
 
     return (
         <div>
-            <ProductForm formData={formData} setFormData={setFormData} />
+            <ProductForm formData={formData} setFormData={setFormData} resetFormData={resetFormData} />
         </div>
     )
 }

@@ -12,7 +12,6 @@ const Products = () => {
 
   function handleSearch() {
     const inputValue = inputElementRef.current.value
-    console.log('input value is', inputValue)
     setSearchTerm(inputValue)
   }
 
