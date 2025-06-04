@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import useFetch from '../../hooks/useFetch'
 import ProductsList from '../../components/productsList/productsList'
 import styles from './Products.module.css'
+import { Link } from 'react-router-dom'
 
 const Products = () => {
 
@@ -23,6 +24,7 @@ const Products = () => {
           <img className={styles.search_img} src="/images/search-icon.png" alt="" />
         </button>
       </div>
+      <Link to='/addProduct'>Add new product</Link>
       {isPending && <p>Loading...</p>}
       {error && <p>error</p>}
       {data && <ProductsList products={data} />}

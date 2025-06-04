@@ -6,6 +6,7 @@ import Categories from './pages/categories/Categories'
 import Users from './pages/users/Users'
 import Orders from './pages/Orders/Orders'
 import EditProduct from './pages/editProduct/EditProduct'
+import AddProduct from './pages/addProduct/AddProduct'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
             <Route path={"orders"} element={<Orders />} />
             <Route path={"users"} element={<Users />} />
             <Route path={"editProduct/:id"} element={<EditProduct />} />
+            <Route path={"addProduct"} element={<AddProduct />} />
           </Route>
         </Routes>
       </Router>
