@@ -12,7 +12,6 @@ const Products = () => {
 
   function handleSearch() {
     const inputValue = inputElementRef.current.value
-    console.log('input value is', inputValue)
     setSearchTerm(inputValue)
   }
 
@@ -27,6 +26,7 @@ const Products = () => {
       <Link to='/addProduct'>Add new product</Link>
       {isPending && <p>Loading...</p>}
       {error && <p>error</p>}
+      <Link to='/addNewProduct'>Add new product</Link>
       {data && <ProductsList products={data} />}
     </div>
   )

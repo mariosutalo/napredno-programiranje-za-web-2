@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
-import styles from './EditProduct.module.css'
-import AddProduct from '../addProduct/AddProduct'
-import AddProductForm from '../../components/addProductForm/AddProductForm'
+import ProductForm from '../../components/productForm/ProductForm'
 
 const EditProduct = () => {
     const { id } = useParams()
@@ -16,15 +14,11 @@ const EditProduct = () => {
         }
     }, [data])
 
-    useEffect(() => {
-        console.log('Form data in use effect:', formData)
-    }, [formData])
-
     return (
         <div>
             {error && <p>Error fetching</p>}
             {isPending && <p>Loading</p>}
-            <AddProductForm productData={formData} productId={id} setProductData={setFormData} />
+            {formData && <ProductForm formData={formData} setFormData={setFormData} productId={id} />}
         </div>
     )
 }
